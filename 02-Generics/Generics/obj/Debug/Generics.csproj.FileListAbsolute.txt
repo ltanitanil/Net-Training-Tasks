@@ -1,0 +1,6 @@
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics\bin\Debug\Generics.dll
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics\bin\Debug\Generics.pdb
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics\obj\Debug\Generics.csprojAssemblyReference.cache
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics\obj\Debug\Generics.csproj.CoreCompileInputs.cache
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics\obj\Debug\Generics.dll
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics\obj\Debug\Generics.pdb

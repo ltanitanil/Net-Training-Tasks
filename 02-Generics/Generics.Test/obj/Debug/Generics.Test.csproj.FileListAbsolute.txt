@@ -1,0 +1,10 @@
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\bin\Debug\Generics.Test.dll
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\bin\Debug\Generics.Test.pdb
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\bin\Debug\Generics.dll
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\bin\Debug\Generics.pdb
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\obj\Debug\Generics.Test.csprojAssemblyReference.cache
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\obj\Debug\Generics.Test.csproj.CoreCompileInputs.cache
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\obj\Debug\Generics.Test.csproj.CopyComplete
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\obj\Debug\Generics.Test.dll
+C:\Users\tanu2\source\repos\Net-Training-Tasks\02-Generics\Generics.Test\obj\Debug\Generics.Test.pdb

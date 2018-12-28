@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{A42944AD-4AA8-4B66-A08C-33B6D7B3AD68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics.Test", "Generics.Test\Generics.Test.csproj", "{383D899F-0C68-4477-A930-CAE5E0213CCA}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Generics.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A42944AD-4AA8-4B66-A08C-33B6D7B3AD68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A42944AD-4AA8-4B66-A08C-33B6D7B3AD68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A42944AD-4AA8-4B66-A08C-33B6D7B3AD68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A42944AD-4AA8-4B66-A08C-33B6D7B3AD68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{383D899F-0C68-4477-A930-CAE5E0213CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{383D899F-0C68-4477-A930-CAE5E0213CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{383D899F-0C68-4477-A930-CAE5E0213CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{383D899F-0C68-4477-A930-CAE5E0213CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
