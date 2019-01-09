@@ -71,12 +71,11 @@ namespace Task.Generics
         /// <param name="index2">second index</param>
         public static void SwapArrayElements<T>(this T[] array, int index1, int index2)
         {
-            if (index1 != index2)
-            {
-                var temp = array[index1];
-                array[index1] = array[index2];
-                array[index2] = temp;
-            }
+            if (index1 == index2)
+                return;
+            var temp = array[index1];
+            array[index1] = array[index2];
+            array[index2] = temp;
         }
 
         /// <summary>
@@ -110,15 +109,10 @@ namespace Task.Generics
             where T2 : IComparable
             where T3 : IComparable
         {
+            Func<Tuple<T1, T2, T3>, IComparable>[] items = { x => x.Item1, x => x.Item2, x => x.Item3 };
+            var item = items[sortedColumn];
             int comp = ascending ? 1 : -1;
-            switch (sortedColumn)
-            {
-                case 0: { Array.Sort(array, (element1, element2) => element1.Item1.CompareTo(element2.Item1) * comp); break; }
-                case 1: { Array.Sort(array, (element1, element2) => element1.Item2.CompareTo(element2.Item2) * comp); break; }
-                case 2: { Array.Sort(array, (element1, element2) => element1.Item3.CompareTo(element2.Item3) * comp); break; }
-                default: { throw new IndexOutOfRangeException(); }
-            }
-
+            Array.Sort(array, (element1, element2) => item(element1).CompareTo(item(element1)) * comp);
         }
     }
 
@@ -132,15 +126,13 @@ namespace Task.Generics
     public static class Singleton<T>
             where T : new()
     {
-        private static T instance;
-        public static T Instance
+        private static readonly Lazy<T> lazy =
+                    new Lazy<T>(() => new T());
+
+        public static T Instance { get { return lazy.Value; } }
+
+        static Singleton()
         {
-            get
-            {
-                if (instance == null)
-                    instance = new T();
-                return instance;
-            }
         }
     }
 
@@ -168,9 +160,8 @@ namespace Task.Generics
         /// </example>
         public static T TimeoutSafeInvoke<T>(this Func<T> function)
         {
-            int counter = 0;
-            bool isError = false;
-            do
+            const int attempts = 3;
+            for (int i = 0; i < attempts; i++)
             {
                 try
                 {
@@ -178,12 +169,9 @@ namespace Task.Generics
                 }
                 catch (WebException webException)
                 {
-                    isError = true;
-                    counter++;
                     Trace.WriteLine(webException);
                 }
             }
-            while (isError && counter < 3);
             throw new WebException();
         }
 
