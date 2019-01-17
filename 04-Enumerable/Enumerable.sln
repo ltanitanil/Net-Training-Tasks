@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enumerable", "Enumerable\Enumerable.csproj", "{2919A96B-467E-4780-BA5F-100F9F9AC15F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumerableTest", "EnumerableTest\EnumerableTest.csproj", "{F5ABEB57-0203-4068-8D07-1EB00DFAF162}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Enumerable.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2919A96B-467E-4780-BA5F-100F9F9AC15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2919A96B-467E-4780-BA5F-100F9F9AC15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2919A96B-467E-4780-BA5F-100F9F9AC15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2919A96B-467E-4780-BA5F-100F9F9AC15F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5ABEB57-0203-4068-8D07-1EB00DFAF162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5ABEB57-0203-4068-8D07-1EB00DFAF162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5ABEB57-0203-4068-8D07-1EB00DFAF162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5ABEB57-0203-4068-8D07-1EB00DFAF162}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
