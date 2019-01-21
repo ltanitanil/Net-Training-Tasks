@@ -1,0 +1,33 @@
+<Document>
+  <Sentence>
+    <Word>I </Word>
+    <Word>was </Word>
+    <Word>in </Word>
+    <Word>Brest </Word>
+    <Word>last </Word>
+    <Word>summer</Word>
+    <Punctuation>. </Punctuation>
+  </Sentence>
+  <Sentence>
+    <Word>It </Word>
+    <Word>was </Word>
+    <Word>very </Word>
+    <Word>nice</Word>
+    <Punctuation>. </Punctuation>
+  </Sentence>
+  <Sentence>
+    <Part>
+      <Word>But </Word>
+      <Word>there </Word>
+      <Word>is </Word>
+      <Word>an </Word>
+      <Word>issue</Word>
+      <Punctuation> - </Punctuation>
+      <Word>it </Word>
+      <Word>is </Word>
+      <Word>in </Word>
+      <Word>France</Word>
+      <Punctuation>.</Punctuation>
+    </Part>
+  </Sentence>
+</Document>

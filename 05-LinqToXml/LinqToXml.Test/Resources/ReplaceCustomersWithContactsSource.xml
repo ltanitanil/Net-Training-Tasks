@@ -1,0 +1,14 @@
+<Document>
+  <customer>
+    <name>Mark</name>
+    <lastname>Avrelij</lastname>
+  </customer>
+  <customer>
+    <name>Joan</name>
+    <lastname>Dark</lastname>
+  </customer>
+  <customer>
+    <name>Michail</name>
+    <lastname>Gorbachev</lastname>
+  </customer>
+</Document>

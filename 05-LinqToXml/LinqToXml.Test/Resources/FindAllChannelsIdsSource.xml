@@ -1,0 +1,18 @@
+﻿<service>
+  <channel id="7">
+    <subscriber>Anna</subscriber>
+    <subscriber>Helga</subscriber>
+    <!--DELETE-->
+  </channel>
+  <channel id="3">
+    <subscriber>Anna</subscriber>
+    <subscriber>Helga</subscriber>
+  </channel>
+  <channel id="1">
+    <subscriber>Helga</subscriber>
+  </channel>
+  <channel id="9">
+    <subscriber>Mika</subscriber>
+    <!--DELETE-->
+  </channel>
+</service>
