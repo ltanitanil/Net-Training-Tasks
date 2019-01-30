@@ -136,9 +136,11 @@ namespace LinqToXml
         public static int GetOrdersValue(string xmlRepresentation)
         {
             var products = XElement.Parse(xmlRepresentation).Element("products").Elements();
-            return XElement.Parse(xmlRepresentation).Element("Orders").Descendants("product")
-                .Select(x => int.Parse(products.FirstOrDefault(y => y.Attribute("Id").Value == x.Value).Attribute("Value").Value))
-                .Sum();
+            var orders = XElement.Parse(xmlRepresentation).Element("Orders").Elements("Order").Elements("product");
+            return products.Join(orders, p => p.Attribute("Id").Value,
+                                         o => o.Value,
+                                         (p, o) => int.Parse(p.Attribute("Value").Value))
+                                         .Sum(x => x);
         }
     }
 }
