@@ -17,7 +17,7 @@ namespace LinqToXml
         public static string CreateHierarchy(string xmlRepresentation)
         {
             return new XElement("Root", XElement.Parse(xmlRepresentation).Elements("Data")
-                                        .GroupBy(x => x.Element("Category").Value)
+                                        .GroupBy(x => (string)x.Element("Category"))
                                         .Select(x => new XElement("Group",
                                                     new XAttribute("ID", x.Key),
                                                     x.Select(y => new XElement("Data",
@@ -37,8 +37,8 @@ namespace LinqToXml
         {
             XNamespace xNamespace = "http://www.adventure-works.com";
             var purchaseOrdersNumbers = XElement.Parse(xmlRepresentation).Descendants(xNamespace + "Address")
-                .Where(x => x.Attribute(xNamespace + "Type").Value == "Shipping" && x.Element(xNamespace + "State").Value == "NY")
-                .Select(x => x.Parent.Attribute(xNamespace + "PurchaseOrderNumber").Value);
+                .Where(x => (string)x.Attribute(xNamespace + "Type") == "Shipping" && (string)x.Element(xNamespace + "State") == "NY")
+                .Select(x => (string)x.Parent.Attribute(xNamespace + "PurchaseOrderNumber"));
             return string.Join(",", purchaseOrdersNumbers);
         }
 
@@ -74,10 +74,8 @@ namespace LinqToXml
         /// <returns>Concatenation of all this element values.</returns>
         public static string GetConcatenationString(string xmlRepresentation)
         {
-            return string.Join("", XElement.Parse(xmlRepresentation).Elements("Sentence")
-                .Select(x => string.Join("", x.Element("Part") != null
-                    ? x.Element("Part").Elements().Select(y => y.Value)
-                    : x.Elements().Select(y => y.Value))));
+            return (string)XElement.Parse(xmlRepresentation);
+            // or ----> return XElement.Parse(xmlRepresentation).Value;
         }
 
         /// <summary>
@@ -100,7 +98,7 @@ namespace LinqToXml
         {
             return XElement.Parse(xmlRepresentation).Elements("channel")
                 .Where(x => x.Elements("subscriber").Count() > 1 && x.Nodes().OfType<XComment>().Any(y => y.Value == "DELETE"))
-                .Select(x => int.Parse(x.Attribute("id").Value));
+                .Select(x => (int)x.Attribute("id"));
         }
 
         /// <summary>
@@ -111,8 +109,8 @@ namespace LinqToXml
         public static string SortCustomers(string xmlRepresentation)
         {
             return new XElement("Root", XElement.Parse(xmlRepresentation).Elements("Customers")
-                .OrderBy(x => x.Element("FullAddress").Element("Country").Value)
-                .ThenBy(x => x.Element("FullAddress").Element("City").Value)).ToString();
+                .OrderBy(x => (string)x.Element("FullAddress").Element("Country"))
+                .ThenBy(x => (string)x.Element("FullAddress").Element("City"))).ToString();
         }
 
         /// <summary>
@@ -137,9 +135,9 @@ namespace LinqToXml
         {
             var products = XElement.Parse(xmlRepresentation).Element("products").Elements();
             var orders = XElement.Parse(xmlRepresentation).Element("Orders").Elements("Order").Elements("product");
-            return products.Join(orders, p => p.Attribute("Id").Value,
-                                         o => o.Value,
-                                         (p, o) => int.Parse(p.Attribute("Value").Value))
+            return products.Join(orders, p => (int)p.Attribute("Id"),
+                                         o => (int)o,
+                                         (p, o) => (int)p.Attribute("Value"))
                                          .Sum(x => x);
         }
     }
