@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOStreams", "IOStreams\IOStreams.csproj", "{026FD11C-3DD6-4713-AF45-18B09AEA0509}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOStreams.Tests", "IOStreams.Tests\IOStreams.Tests.csproj", "{8F305B6B-2CCE-4014-820F-959405D3AA17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{026FD11C-3DD6-4713-AF45-18B09AEA0509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{026FD11C-3DD6-4713-AF45-18B09AEA0509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{026FD11C-3DD6-4713-AF45-18B09AEA0509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{026FD11C-3DD6-4713-AF45-18B09AEA0509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F305B6B-2CCE-4014-820F-959405D3AA17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F305B6B-2CCE-4014-820F-959405D3AA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F305B6B-2CCE-4014-820F-959405D3AA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F305B6B-2CCE-4014-820F-959405D3AA17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
