@@ -29,15 +29,18 @@ namespace IOStreams
             XNamespace xNamespace = "http://schemas.openxmlformats.org/spreadsheetml/2006/main";
 
             //  /xl/sharedStrings.xml      - dictionary of all string values
-            var xNames = ReadPlanetInfoFromXlsx1(xlsxFileName, "/xl/sharedStrings.xml").Descendants(xNamespace + "si");
+            var xNames = ReadPlanetInfoFromXlsx1(xlsxFileName, "/xl/sharedStrings.xml")
+                .Descendants(xNamespace + "si")
+                .ToArray();
 
             //  /xl/worksheets/sheet1.xml  - main worksheet
-            var xMeanRadii = ReadPlanetInfoFromXlsx1(xlsxFileName, "/xl/worksheets/sheet1.xml").Descendants(xNamespace + "c")
+            return ReadPlanetInfoFromXlsx1(xlsxFileName, "/xl/worksheets/sheet1.xml")
+                .Descendants(xNamespace + "c")
                 .Where(x => ((string)x.Attribute("r")).StartsWith("B"))
-                                                      .Skip(1);
-
-            return xNames.Zip(xMeanRadii, (x, y) => new PlanetInfo { Name = (string)x, MeanRadius = (double)y });
+                .Skip(1)
+                .Select((x, i) => new PlanetInfo { Name = (string)xNames[i], MeanRadius = (double)x });
         }
+
         public static XElement ReadPlanetInfoFromXlsx1(string xlsxFileName, string uri)
         {
             using (Package package = Package.Open(xlsxFileName, FileMode.Open, FileAccess.Read))
@@ -86,8 +89,7 @@ namespace IOStreams
         /// <returns>Unicoded file content</returns>
         public static string ReadEncodedText(string fileName, string encoding)
         {
-            using (var file = new StreamReader(fileName, Encoding.GetEncoding(encoding)))
-                return file.ReadToEnd();
+            return File.ReadAllText(fileName, Encoding.GetEncoding(encoding));
         }
     }
 
