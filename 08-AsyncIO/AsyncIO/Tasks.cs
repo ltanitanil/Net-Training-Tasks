@@ -18,17 +18,9 @@ namespace AsyncIO
         /// </summary>
         /// <param name="uris">Sequence of required uri</param>
         /// <returns>The sequence of downloaded url content</returns>
-        public static IEnumerable<string> GetUrlContent(this IEnumerable<Uri> uris) 
+        public static IEnumerable<string> GetUrlContent(this IEnumerable<Uri> uris)
         {
-            return uris.Select(x =>
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(x);
-                request.AutomaticDecompression = DecompressionMethods.GZip;
-
-                using (Stream receiveStream = request.GetResponse().GetResponseStream())
-                using (StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8))
-                    return readStream.ReadToEnd();
-            });
+            return uris.Select(x => new WebClient().DownloadString(x));
         }
 
 
@@ -45,39 +37,24 @@ namespace AsyncIO
         public static IEnumerable<string> GetUrlContentAsync(this IEnumerable<Uri> uris, int maxConcurrentStreams)
         {
             var uri = uris.GetEnumerator();
-            var task = new List<Task<String>>();
-            do
+            var tasks = new Task<String>[maxConcurrentStreams];
+            for (int i = 0; i < maxConcurrentStreams; i++)
             {
-                if (maxConcurrentStreams > 0 && uri.MoveNext())
+                if (!uri.MoveNext())
                 {
-                    var current = uri.Current;
-                    task.Add(Task.Factory.StartNew(() => GetWebResponse(current)));
-                    maxConcurrentStreams--;
+                    tasks = tasks.Where(x => x != null).ToArray();
+                    break;
                 }
-                else
-                {
-                    int indexOfCompletedTask = Task.WaitAny(task.ToArray());
-                    yield return task[indexOfCompletedTask].Result;
-                    task.RemoveAt(indexOfCompletedTask);
-                    if (uri.MoveNext())
-                    {
-                        var current = uri.Current;
-                        task.Add(Task.Factory.StartNew(() => GetWebResponse(current)));
-                    }
-                }
+                tasks[i] = new WebClient().DownloadStringTaskAsync(uri.Current);
             }
-            while (task.Any());
-        }
-
-        private static string GetWebResponse(Uri uri)
-        {
-            var request = (HttpWebRequest)WebRequest.Create(uri);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-            using (WebResponse webResp = request.GetResponseAsync().Result)
+            while (tasks.Length > 0)
             {
-                using (Stream receiveStream = webResp.GetResponseStream())
-                using (StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8))
-                    return readStream.ReadToEnd();
+                int indexOfCompletedTask = Task.WaitAny(tasks);
+                yield return tasks[indexOfCompletedTask].Result;
+                if (uri.MoveNext())
+                    tasks[indexOfCompletedTask] = new WebClient().DownloadStringTaskAsync(uri.Current);
+                else
+                    tasks = tasks.Where((x, i) => i != indexOfCompletedTask).ToArray();
             }
         }
 

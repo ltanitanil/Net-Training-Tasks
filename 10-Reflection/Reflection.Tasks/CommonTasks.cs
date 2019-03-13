@@ -52,7 +52,6 @@ namespace Reflection.Tasks
             return (T)obj;
         }
 
-
         /// <summary>
         /// Assign the value to the required property path
         /// </summary>
@@ -71,14 +70,12 @@ namespace Reflection.Tasks
         /// <param name="value">assigned value</param>
         public static void SetPropertyValue(this object obj, string propertyPath, object value)
         {
-            var a =propertyPath.Split('.');
+            var a = propertyPath.Split('.');
 
-            for(int i=0;i<a.Length-1;i++)
-                obj = obj.GetType().GetProperty(a[i]).GetValue(obj, new object[0]);
+            if(a.Length>1)
+                obj = obj.GetPropertyValue<object>(string.Join(".",a.Take(a.Length-1)));
 
-            obj.GetType().GetProperty(a.Last()).DeclaringType.GetProperty(a.Last())
-                .GetSetMethod(true).Invoke(obj, new object[] { value });
-            
+            obj.GetType().BaseType.GetProperty(a.Last()).GetSetMethod(true).Invoke(obj, new object[] { value });
         }
 
 
